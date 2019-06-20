@@ -1,0 +1,223 @@
+
+<html>
+	<head>
+	<title> match prediction
+	 </title>
+	 <link rel="stylesheet" href="style.css" type="text/css">
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <style class="col-12">
+			body{
+		background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("3.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+			}
+			body {
+	  margin: 0;
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.topnav {
+	  overflow: hidden;
+	  background-color: none;
+	}
+	
+	.topnav a {
+	  float: left;
+	  display: block;
+	  color: #161212;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-size: 17px;
+	}
+	
+	.topnav a:hover {
+	  background-color: #ddd;
+	  color: black;
+	}
+	
+	.topnav a.active {
+	  background-color: none;
+	  color: white;
+	}
+	
+	.topnav .icon {
+	  display: none;
+	}
+	
+	@media screen and (max-width: 600px) {
+	  .topnav a:not(:first-child) {display: none;}
+	  .topnav a.icon {
+		float: right;
+		display: block;
+	  }
+	}
+	
+	@media screen and (max-width: 600px) {
+	  .topnav.responsive {position: relative;}
+	  .topnav.responsive .icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	  }
+	  .topnav.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	  }
+	}
+		 
+	</style>
+	 <script language="JavaScript">
+		function showInput() {
+	
+			var data = {
+			mail: document.getElementById("mail").value, 
+			name: document.getElementById("name").value,
+			last_name: document.getElementById("last_name").value,
+			favourite_team: document.getElementById("team").value,
+			contact: document.getElementById("contact").value,
+			password: document.getElementById("password").value,
+			birthday: document.getElementById("birthday").value,
+	}
+	body={
+	  method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	  mode: 'cors',
+	  cache:'no-cache',
+	  credentials:'same-origin',
+	  headers:{
+		  'Content-Type':'application/json',
+	  },
+	  redirect:'follow',
+	  referrer:'no-referrer',
+	  body: JSON.stringify(data), // body data type must match "Content-Type" header
+	}
+	console.log(document.getElementById("mail"));
+	console.log(document.getElementById("name"));
+	console.log(document.getElementById("last_name"));
+	console.log(document.getElementById("team"));
+	console.log(document.getElementById("contact"));
+	console.log(document.getElementById("password"));
+	console.log(document.getElementById("birthday"));
+	fetch(url, body).then(
+       function (response) {
+         console.log(response.headers.get('Content-Type'));
+         if (response.status !== 200) {
+           console.log('Looks like there was a problem. Status Code: ' +
+             response.status);
+           return;
+         }
+
+         // Examine the text in the response
+         response.json().then(function (data) {
+           console.log(data);
+         });
+       })
+       .catch(function (err) {
+         console.log('Fetch Error :-S', err);
+       });
+   }
+	
+	var request = new XMLHttpRequest()
+	var url = 'http://localhost:3000/test';
+	
+	
+	  </script>
+	</head>
+	<body>
+		<div class="col-12">
+		<h1 style="font-family: cursive; text-align: center; font-size: 50px; color:rgba(253, 148, 28, 0.979); text-shadow: 2px 3px black"> <i><b>Let's Predict The Future !</b> </i></h1> 
+		</div>
+		<div class="topnav" id="myTopnav">
+				<a href="home.html" class="active">Home</a>
+				<a href="#" style= "text-decoration: none; color:white;">Sign up</a>
+				<a href="sign_in.html" style= "text-decoration: none; color:white;">Sign in</a>
+				<a href="predictions.html" style= "text-decoration: none; color:white;">Predictions</a>
+				<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				  <i class="fa fa-bars"></i>
+				</a>
+			  </div>
+			  
+			  <script>
+					function myFunction() {
+					  var x = document.getElementById("myTopnav");
+					  if (x.className === "topnav") {
+						x.className += " responsive";
+					  } else {
+						x.className = "topnav";
+					  }
+					}
+					</script>
+	  
+					<div class= "container col-12" >	
+						<form class="col-12">
+								<table>
+									<tr>
+										<td> <p class="head"> <strong><b> SIGN UP  </b></strong></p> </td>
+									</tr>	
+									<tr>
+										<td> <input type="text" name="First name" placeholder="First Name" class="f2" id="name" >
+											 <input type="text" name="last name" placeholder="Last Name" class="f2" id="last_name" > </td>
+									</tr>
+									<tr>
+										<td> <input type="email" name="mail" placeholder="Enter your E-mail" class="f3" id="mail" > </td>
+									</tr>
+									
+									<tr>
+										<td> <input type="tel" name="phone" maxlength="10" minlength="10" placeholder="contact number" class="f3" id="contact" > </td>
+									</tr>
+									<tr>
+										<td>
+											<div>
+										  <select class="f3" placeholder= "Favourite Team" id="team">
+											<option value="favourite Team" placeholder="Favourite Team">Favourite Team</option>
+											<option value="India">India</option>
+											<option value="England">England</option>
+											<option value="Australia">Australia</option>
+											<option value="New zealand">New Zealand</option>
+											<option value="South Africa">South Africa</option>
+											<option value="Pakistan"> Pakistan</option>
+											<option value=" West Indies"> West Indies</option>
+											<option value=" Bangladesh"> Bangladesh</option>
+											<option value="Srilanka">Srilanka</option>
+											<option value="Afghanistan"> Afghanistan</option>
+										  </select>
+										  </td>
+										</tr>
+										   <td> <input type="password" name="password" maxlength="20" minlength="8"placeholder="Create your password" class="f3" id="password" > </td>
+									</tr>
+									<tr>
+											<td> <input type ="date" name="date" placeholder="date" class="f3" id="birthday" > </td>
+									</tr>	
+						
+		
+									<tr> 
+										<td style="font-size: 25px; color:linen">
+											<b>Gender</b><input type="radio" name="gender"><span style ="font-size: 25px; color:linen;"><b> Male</b></span>
+											<input type="radio" name="gender"><span style ="font-size: 25px; color:linen;"> <b>Female </b></span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+	
+											
+											<button type="button" onclick="showInput()" class="ac1"> Sign up  <br> 
+											
+										
+											
+											
+										</td> 
+									</tr>	
+						
+								</table>
+			
+					 
+					</form>
+	
+	
+		</body>
+	
+	</html>
